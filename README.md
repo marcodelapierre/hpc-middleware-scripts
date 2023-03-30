@@ -10,6 +10,6 @@ Current categories:
 * `gpu`
 * `modules`
 * `mpi`
-* `software`
+* `package-managers`
 * `workflow-engines`
 
