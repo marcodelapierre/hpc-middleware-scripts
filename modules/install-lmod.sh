@@ -1,7 +1,7 @@
 #!/bin/bash
 # following Lmod documentation
 
-LMOD_VERSION="8.5"
+LMOD_VERSION="8.7.31"
 
 # install pre-requisites
 sudo apt-get update
@@ -31,8 +31,8 @@ sudo ln -s /usr/lib/x86_64-linux-gnu/liblua5.3-posix.so \
   /usr/lib/x86_64-linux-gnu/lua/5.3/posix.so
 
 # install Lmod
-wget https://sourceforge.net/projects/lmod/files/Lmod-${LMOD_VERSION}.tar.bz2
-tar xf Lmod-${LMOD_VERSION}.tar.bz2
+wget https://github.com/TACC/Lmod/archive/refs/tags/${LMOD_VERSION}.tar.gz
+tar xf ${LMOD_VERSION}.tar.gz
 cd Lmod-${LMOD_VERSION}/
 ./configure --prefix=/opt/apps
 sudo make install
