@@ -31,6 +31,14 @@ sudo add-apt-repository -y ppa:projectatomic/ppa
 sudo apt-get update -qq
 sudo apt-get -qq -y install podman
 
+dir="/etc/systemd/system/user@.service.d"
+sudo mkdir -p $dir
+sudo cat << EOF >>"$dir/delegate.conf"
+[Service]
+Delegate=memory pids cpu cpuset
+EOF
+# reboot needed for the above to become active
+
 sudo apt-get install -y \
   autoconf \
   clang \
