@@ -1,7 +1,7 @@
 #!/bin/bash
 # following Lmod documentation
 
-LMOD_VERSION="8.7.31"
+LMOD_VERSION="8.7.32"
 
 # install pre-requisites
 sudo apt-get update
