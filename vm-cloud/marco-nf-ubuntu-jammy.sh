@@ -16,7 +16,7 @@ sudo apt install -y \
     python3-dev python3-pip python3-setuptools python3-venv \
     git wget curl tar gzip zip unzip bzip2 \
     coreutils patchelf patch file lsb-release gnupg2 gnupg gpg \
-    vim
+    nano vim
 
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 
