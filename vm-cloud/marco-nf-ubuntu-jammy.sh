@@ -102,6 +102,7 @@ sudo ln -s /opt/apps/lmod/lmod/init/profile /etc/profile.d/z00_lmod.sh
 pip install singularity-hpc
 PATH="$HOME/.local/bin:$PATH"
 
+
 # sdkman + java
 curl -s "https://get.sdkman.io" | bash
 . /home/ubuntu/.sdkman/bin/sdkman-init.sh
