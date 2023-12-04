@@ -115,7 +115,7 @@ sudo ln -s /opt/apps/lmod/lmod/init/profile /etc/profile.d/z00_lmod.sh
 curl -s "https://get.sdkman.io" | bash
 . /home/ubuntu/.sdkman/bin/sdkman-init.sh
 for ver in ${java_ver_list} ; do
-  sdk install java ${ver}
+  echo n | sdk install java ${ver}
 done
 sdk default java ${java_ver_default}
 sdk install gradle ${gradle_ver}
