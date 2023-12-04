@@ -2,13 +2,18 @@
 
 # reboot vm after running this script
 
-singularity_ver="4.0.1"
+singularity_ver="4.0.2"
+apptainer_ver="1.2.5"
 lmod_ver="8.7.32"
+java_ver_list="17.0.9-graalce 20.0.2-graalce 21-graalce"
+java_ver_default="20.0.2-graalce"
+gradle_ver="8.4"
 
 export DEBIAN_FRONTEND="noninteractive"
-
+cd ~
 sudo apt update && sudo apt upgrade -y
 
+# generic extras
 sudo apt install -y \
     ca-certificates \
     build-essential gfortran \
@@ -52,12 +57,14 @@ sudo apt install -y \
     docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 sudo usermod -aG docker $USER
 
-
 # singularity
 singularity_deb_file="singularity-ce_${singularity_ver}-jammy_amd64.deb"
 wget https://github.com/sylabs/singularity/releases/download/v${singularity_ver}/${singularity_deb_file}
 sudo apt install ./${singularity_deb_file}
-rm ${singularity_deb_file}
+
+# apptainer (download only)
+apptainer_deb_file="apptainer_${apptainer_ver}_amd64.deb"
+wget https://github.com/apptainer/apptainer/releases/download/v${apptainer_ver}/${apptainer_deb_file}
 
 
 # lmod
@@ -103,10 +110,14 @@ pip install singularity-hpc
 PATH="$HOME/.local/bin:$PATH"
 
 
-# sdkman + java
+# sdkman + java + gradle
 curl -s "https://get.sdkman.io" | bash
 . /home/ubuntu/.sdkman/bin/sdkman-init.sh
-sdk install java 21-graalce
+for ver in ${java_ver_list} ; do
+  sdk install java ${ver}
+done
+sdk default java ${java_ver_default}
+sdk install gradle ${gradle_ver}
 
 
 # final apt cleanup
