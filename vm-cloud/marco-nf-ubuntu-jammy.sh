@@ -19,14 +19,21 @@ sudo apt update && sudo apt upgrade -y
 # generic extras
 sudo apt install -y \
     ca-certificates \
-    build-essential gfortran \
-    make automake autoconf cmake \
+    build-essential gfortran make automake autoconf cmake \
     python3-dev python3-pip python3-setuptools python3-venv \
-    git wget curl tar gzip zip unzip bzip2 \
+    git wget curl groff tar gzip zip unzip bzip2 \
     coreutils patchelf patch file lsb-release gnupg2 gnupg gpg \
     nano vim
 
+# python default command
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+
+# aws cli
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o awscliv2.zip
+unzip -q awscliv2.zip 
+sudo ./aws/install
+rm -fr awscliv2.zip aws
+
 
 # singularity extras
 sudo apt install -y \
