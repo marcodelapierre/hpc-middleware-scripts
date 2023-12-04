@@ -2,12 +2,14 @@
 
 # reboot vm after running this script
 
+# versioned packages
 singularity_ver="4.0.2"
 apptainer_ver="1.2.5"
 lmod_ver="8.7.32"
 java_ver_list="17.0.9-graalce 20.0.2-graalce 21-graalce"
 java_ver_default="20.0.2-graalce"
 gradle_ver="8.4"
+
 
 export DEBIAN_FRONTEND="noninteractive"
 cd ~
@@ -66,6 +68,10 @@ sudo apt install ./${singularity_deb_file}
 apptainer_deb_file="apptainer_${apptainer_ver}_amd64.deb"
 wget https://github.com/apptainer/apptainer/releases/download/v${apptainer_ver}/${apptainer_deb_file}
 
+# shpc
+pip install singularity-hpc
+PATH="$HOME/.local/bin:$PATH"
+
 
 # lmod
 # install pre-requisites
@@ -105,11 +111,6 @@ sudo ln -s /opt/apps/lmod/lmod/init/profile /etc/profile.d/z00_lmod.sh
 . /etc/profile.d/z00_lmod.sh
 
 
-# shpc
-pip install singularity-hpc
-PATH="$HOME/.local/bin:$PATH"
-
-
 # sdkman + java + gradle
 curl -s "https://get.sdkman.io" | bash
 . /home/ubuntu/.sdkman/bin/sdkman-init.sh
@@ -119,6 +120,14 @@ done
 sdk default java ${java_ver_default}
 sdk install gradle ${gradle_ver}
 
+
+# create useful directories and get useful repos
+mkdir develop test
+cd develop
+git clone git@github.com:nextflow-io/nextflow
+git clone git@github.com:seqeralabs/wave
+git clone git@github.com:seqeralabs/wave-cli
+cd -
 
 # final apt cleanup
 sudo apt clean all -y && \
