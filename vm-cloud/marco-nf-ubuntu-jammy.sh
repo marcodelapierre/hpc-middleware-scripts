@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # reboot vm after running this script
+# also, remotely connect with VS Code, to get vscode-server downloaded
 
 # versioned packages
 singularity_ver="4.0.2"
