@@ -8,12 +8,19 @@ USERID="$USER"
 # install Spack dependencies
 sudo apt update
 sudo apt install -y \
-  python3 \
   build-essential \
-  make \
-  git \
+  ca-certificates \
+  coreutils \
   curl \
-  unzip
+  gfortran \
+  git \
+  gpg \
+  lsb-release \
+  python3 \
+  python3-distutils \
+  python3-venv \
+  unzip \
+  zip
 
 # create install dir
 sudo mkdir -p $SPACK_ROOT
