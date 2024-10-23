@@ -1,0 +1,4 @@
+#packages:
+#  all:
+# updated based on available and desired compilers
+#    compiler: [gcc, oneapi]
