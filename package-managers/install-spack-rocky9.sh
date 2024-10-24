@@ -43,5 +43,6 @@ git clone https://github.com/spack/spack.git .
 git checkout releases/v"$SPACK_VER"
 
 # configure shell environment for Spack
-echo ". ${SPACK_ROOT}/share/spack/setup-env.sh" >> $(eval echo ~${USERID})/.bashrc
+cat << EOF >> $(eval echo ~${USERID})/.bashrc
 . ${SPACK_ROOT}/share/spack/setup-env.sh
+EOF
