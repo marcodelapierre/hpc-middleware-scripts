@@ -35,6 +35,7 @@ export EB_PYTHON=python3
 export EASYBUILD_RPATH=1
 
 #export EASYBUILD_DEBUG=1
+#export EASYBUILD_TRACE=1
 #export EASYBUILD_SYSROOT="/"
 
 #module use "$EB_ROOT/modules/all"
