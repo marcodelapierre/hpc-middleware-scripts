@@ -13,5 +13,5 @@ modules:
       hierarchy::
         - compiler
 # update based on system compiler version
-#      core_compilers::
-#        - gcc@=7.5.0
+      core_compilers::
+        - gcc@=7.5.0
