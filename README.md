@@ -9,6 +9,7 @@ Current categories:
 * `container-tools`
 * `dev-tools`
 * `gpu`
+* `k8s-apps`
 * `modules`
 * `mpi`
 * `package-managers`
