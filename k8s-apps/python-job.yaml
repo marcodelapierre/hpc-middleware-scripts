@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: python-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: python
+        image: python:3.11-slim
+        command: ["python", "/app/hello.py"]
+        volumeMounts:
+        - name: script-vol
+          mountPath: /app
+      volumes:
+      - name: script-vol
+#        hostPath:
+#          path: /home/mdelapierre/gitrepos/Marco/hpc-middleware-scripts/k8s-apps/files
+        configMap:
+          name: hello-py
+      restartPolicy: Never

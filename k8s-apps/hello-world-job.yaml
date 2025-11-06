@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: hello-world-job
+spec:
+  template: # Specifies the pod template
+    spec:
+      containers:
+      - name: hello-world
+        image: busybox # Replace with your desired image
+        command: ["/bin/sh", "-c", "echo 'Hello, world!'"]
+        # The command above will execute the echo command in the busybox container
+      restartPolicy: OnFailure # Restart the pod if the container fails
+  backoffLimit: 2 # Sets the maximum number of retries for the job
