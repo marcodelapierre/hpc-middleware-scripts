@@ -14,5 +14,6 @@ Current categories:
 * `modules`
 * `mpi`
 * `package-managers`
+* `user-portals`
 * `vm-cloud`
 * `workflow-engines`
