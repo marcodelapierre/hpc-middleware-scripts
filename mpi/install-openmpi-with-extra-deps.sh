@@ -30,6 +30,7 @@ tar xzf prrte-4.1.0.tar.gz
 tar xjf openmpi-5.0.10.tar.bz2
 
 #UCX
+#NOTE: may require further configs when actual interconnect is present
 cd $startdir/ucx-1.20.1
 mkdir build && cd build
 ../configure --prefix=$startdir/software/ucx --enable-compiler-opt=3 --enable-optimizations --enable-openmp --enable-mt --enable-cma --without-java --without-go --disable-doxygen-doc --disable-logging --disable-debug --disable-assertions --disable-params-check
@@ -37,6 +38,7 @@ make -j2
 make install
 
 #UCC (deps on UCX)
+#NOTE: may require further configs when actual interconnect is present
 cd $startdir/ucc-1.8.0
 ./autogen.sh
 mkdir build && cd build
@@ -59,6 +61,7 @@ make -j2
 make install
 
 #OpenMPI (deps on UCX,UCC,PMIx,PRRTE)
+#NOTE: may require further configs when actual interconnect is present
 cd $startdir/openmpi-5.0.10
 mkdir build && cd build
 ../configure --prefix=$startdir/software/openmpi --with-ucx=$startdir/software/ucx --with-ucc=$startdir/software/ucc --with-pmix=$startdir/software/pmix --with-prrte=$startdir/software/prrte --with-slurm
