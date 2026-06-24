@@ -67,6 +67,10 @@ sudo apt install -y \
   libmariadb-dev
 
 # configure mariadb
+sudo mkdir -p /etc/my.cnf.d
+sudo cp -p slurm_config/innodb.cnf /etc/my.cnf.d/
+sudo chown root:root /etc/my.cnf.d/innodb.cnf
+
 #sudo systemctl enable mariadb
 sudo systemctl start mariadb
 
@@ -74,10 +78,6 @@ sudo mysqladmin -u root password 'HPCNOW'
 sudo mysql --user="root" --password="HPCNOW" --execute="create user 'slurm'@'localhost' identified by 'HPCNOW';"
 sudo mysql --user="root" --password="HPCNOW" --execute="grant all on slurm_acct_db.* TO 'slurm'@'localhost';"
 sudo mysql --user="root" --password="HPCNOW" --execute="create database slurm_acct_db;"
-
-sudo mkdir -p /etc/my.cnf.d
-sudo cp -p slurm_config/innodb.cnf /etc/my.cnf.d/
-sudo chown root:root /etc/my.cnf.d/innodb.cnf
 
 
 # install slurm
